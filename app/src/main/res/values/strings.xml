@@ -1,0 +1,9 @@
+<resources>
+    <string name="choose_team">Choose your team</string>
+    <string name="organizer_flag">Organizer\'s flag</string>
+
+    <string name="timer" translatable="false">%d:%02d:%02d</string>
+    <string name="whats_next">before next %s</string>
+    <string name="past_season">Season %1$s/%2$s</string>
+    <string name="choose_season">Choose season</string>
+</resources>

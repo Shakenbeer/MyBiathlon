@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="MedalView">
+        <attr name="bronze" format="integer" />
+        <attr name="silver" format="integer" />
+        <attr name="gold" format="integer" />
+        <attr name="medalSize" format="dimension" />
+    </declare-styleable>
+</resources>

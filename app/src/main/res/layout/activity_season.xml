@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rootLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.shakenbeer.biathlon.season.presentation.SeasonActivity">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        app:layout_constraintTop_toTopOf="parent"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/seasonRecyclerView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/beforeTextView"
+        tools:listitem="@layout/item_event">
+
+    </androidx.recyclerview.widget.RecyclerView>
+
+    <View
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:background="@color/colorTextDefault"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/seasonRecyclerView" />
+
+    <TextView
+        android:id="@+id/seasonTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:textSize="17sp"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/toolbar"
+        tools:text="Season 17/18" />
+
+    <TextView
+        android:id="@+id/daysTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:includeFontPadding="false"
+        android:lineSpacingExtra="0dp"
+        android:textSize="92sp"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/toolbar"
+        tools:text="001" />
+
+    <Space
+        android:visibility="gone"
+        android:id="@+id/space0"
+        android:layout_width="0dp"
+        android:layout_height="92dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/timeTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:includeFontPadding="false"
+        android:lineSpacingExtra="0dp"
+        android:textSize="38sp"
+        app:layout_constraintEnd_toEndOf="@+id/daysTextView"
+        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintStart_toStartOf="@+id/daysTextView"
+        app:layout_constraintTop_toBottomOf="@+id/space0"
+        app:layout_goneMarginTop="8dp"
+        tools:text="12:34:56" />
+
+    <TextView
+        android:id="@+id/beforeTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="17sp"
+        app:layout_constraintEnd_toEndOf="@+id/timeTextView"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="@+id/timeTextView"
+        app:layout_constraintTop_toBottomOf="@+id/timeTextView"
+        tools:text="before next season" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

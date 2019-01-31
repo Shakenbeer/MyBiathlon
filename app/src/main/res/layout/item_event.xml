@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="obj"
+            type="com.shakenbeer.biathlon.model.Event" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="96dp"
+        android:background="?attr/selectableItemBackground">
+
+        <View
+            android:layout_width="260dp"
+            android:layout_height="1dp"
+            android:background="@color/colorTextDefault"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/flagImageView"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="50dp"
+            android:layout_marginTop="24dp"
+            android:contentDescription="@string/organizer_flag"
+            app:layout_constraintStart_toEndOf="@id/vert_center"
+            app:layout_constraintTop_toTopOf="parent"
+            app:nat="@{obj.nat}"
+            tools:srcCompat="@sample/flags" />
+
+        <TextView
+            android:id="@+id/organizerTextView"
+            android:layout_width="180dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:gravity="center_horizontal"
+            android:text="@{obj.shortDescription}"
+            app:layout_constraintEnd_toStartOf="@+id/flagImageView"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="@sample/organizers" />
+
+        <TextView
+            android:id="@+id/datesTextView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@{obj.dates}"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toStartOf="@+id/guideline"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/organizerTextView"
+            tools:text="24 Nov - 3 Dec 2017" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_end="80dp" />
+
+        <com.shakenbeer.biathlon.season.presentation.MedalView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="4dp"
+            android:layout_marginStart="4dp"
+
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/organizerTextView"
+            app:medalSize="9dp"
+            tools:bronze="1"
+            tools:gold="1"
+            tools:silver="1" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/vert_center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.5" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

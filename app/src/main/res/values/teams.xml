@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="ibu_athlete">#c8fecb32</color>
+    <color name="ibu_black">#c8292929</color>
+    <color name="ibu_ring">#c8e63339</color>
+
+    <color name="austria_red">#c8ff0000</color>
+    <color name="austria_white">#c8ffffff</color>
+
+    <color name="belarus_red">#c8e3370d</color>
+    <color name="belarus_green">#c860a300</color>
+    <color name="belarus_white">#c8ffffff</color>
+
+    <color name="germany_start">#c8000000</color>
+    <color name="germany_red">#c8ff0000</color>
+    <color name="germany_yellow">#c8ffcc00</color>
+
+    <color name="italy_green">#c8009246</color>
+    <color name="italy_white">#c8f1f2f1</color>
+    <color name="italy_red">#c8ce2b37</color>
+
+    <color name="china_red">#c8ff0000</color>
+    <color name="china_yellow">#c8ffcc00</color>
+
+    <color name="norway_red">#c8ed2939</color>
+    <color name="norway_white">#c8ffffff</color>
+    <color name="norway_blue">#c8002664</color>
+
+    <color name="poland_white">#c8e9e8e7</color>
+    <color name="poland_red">#c8d4213d</color>
+
+    <color name="slovenia_white">#c8ffffff</color>
+    <color name="slovenia_blue">#c8005ea4</color>
+    <color name="slovenia_red">#c8dc2a1b</color>
+
+    <color name="ukraine_blue">#c8005bbb</color>
+    <color name="ukraine_yellow">#c8ffd500</color>
+
+    <color name="france_blue">#c80055a4</color>
+    <color name="france_white">#c8ffffff</color>
+    <color name="france_red">#c8ef4135</color>
+
+    <color name="sweden_blue">#c80065a4</color>
+    <color name="sweden_yellow">#c8ffde00</color>
+
+    <color name="finland_white">#c8ffffff</color>
+    <color name="finland_blue">#c818447e</color>
+
+    <color name="usa_red">#c8b22234</color>
+    <color name="usa_white">#c8ffffff</color>
+    <color name="usa_blue">#c83c3b6e</color>
+
+</resources>
