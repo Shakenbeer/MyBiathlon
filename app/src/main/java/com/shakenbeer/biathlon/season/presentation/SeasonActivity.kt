@@ -11,23 +11,84 @@ import android.widget.Toast.LENGTH_LONG
 import androidx.constraintlayout.widget.ConstraintSet
 import androidx.constraintlayout.widget.ConstraintSet.BOTTOM
 import androidx.constraintlayout.widget.ConstraintSet.TOP
-import com.shakenbeer.biathlon.BoilerplateApplication
-import com.shakenbeer.biathlon.Const.teams
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.shakenbeer.biathlon.BiathlonApplication
 import com.shakenbeer.biathlon.R
+import com.shakenbeer.biathlon.event.presentation.EventActivity
 import com.shakenbeer.biathlon.model.Event
 import com.shakenbeer.biathlon.model.PastSeason
 import com.shakenbeer.biathlon.season.SeasonComponent
 import com.shakenbeer.biathlon.season.SeasonModule
 import com.shakenbeer.biathlon.settings.UserSettings
+import com.shakenbeer.biathlon.shared.Const.teams
+import com.shakenbeer.biathlon.ui.BaseBindingAdapter
 import com.shakenbeer.biathlon.ui.BasePendingActivity
-import com.shakenbeer.biathlon.ui.SingleLayoutAdapter
 import kotlinx.android.synthetic.main.activity_season.*
 import org.apache.commons.lang3.time.DateUtils
 import java.util.Calendar.YEAR
 import javax.inject.Inject
 
-
 class SeasonActivity : BasePendingActivity<SeasonView, SeasonPresenter>(), SeasonView {
+    @Inject
+    lateinit var seasonPresenter: SeasonPresenter
+    @Inject
+    lateinit var userSettings: UserSettings
+    @Inject
+    lateinit var adapter: EventAdapter
+
+    @Suppress("DEPRECATION")
+    private val seasonComponent: SeasonComponent by lazy {
+        lastCustomNonConfigurationInstance as SeasonComponent?
+                ?: (application as BiathlonApplication)
+                        .component + SeasonModule()
+    }
+
+    override fun pendingPresenter() = seasonPresenter
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        seasonComponent.inject(this)
+        setContentView(R.layout.activity_season)
+        setSupportActionBar(toolbar)
+        supportActionBar?.setDisplayShowTitleEnabled(false)
+        seasonRecyclerView.layoutManager = LinearLayoutManager(this)
+        adapter.setItemClickListener(object : BaseBindingAdapter.ItemClickListener<Event> {
+            override fun onClick(item: Event, position: Int) {
+                EventActivity.start(this@SeasonActivity, item.eventId)
+            }
+        })
+        seasonRecyclerView.adapter = adapter
+        updateBackground()
+        if (savedInstanceState == null) {
+            seasonPresenter.obtainEvents("1920", 1)
+        } else {
+            seasonPresenter.restore(this)
+        }
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        menuInflater.inflate(R.menu.menu, menu)
+        return true
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        if (isFinishing) {
+            seasonPresenter.destroy()
+        }
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if (item.itemId == R.id.action_choose_team) {
+            showTeamDialog()
+            return true
+        }
+        if (item.itemId == R.id.action_choose_season) {
+            showSeasonDialog()
+        }
+        return super.onOptionsItemSelected(item)
+    }
+
 
     override fun showEvents(events: List<Event>, anotherSeason: Boolean) {
         adapter.items = events.toMutableList()
@@ -88,62 +149,6 @@ class SeasonActivity : BasePendingActivity<SeasonView, SeasonPresenter>(), Seaso
         }
     }
 
-    @Inject
-    lateinit var seasonPresenter: SeasonPresenter
-    @Inject
-    lateinit var userSettings: UserSettings
-    @Inject
-    lateinit var adapter: SingleLayoutAdapter
-
-    @Suppress("DEPRECATION")
-    private val seasonComponent: SeasonComponent by lazy {
-        lastCustomNonConfigurationInstance as SeasonComponent?
-                ?: (application as BoilerplateApplication)
-                        .component
-                        .plus(SeasonModule())
-    }
-
-    override fun pendingPresenter() = seasonPresenter
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        seasonComponent.inject(this)
-        setContentView(R.layout.activity_season)
-        setSupportActionBar(toolbar)
-        supportActionBar?.setDisplayShowTitleEnabled(false)
-        seasonRecyclerView?.layoutManager = androidx.recyclerview.widget.LinearLayoutManager(this)
-        seasonRecyclerView?.adapter = adapter
-        updateBackground()
-        if (savedInstanceState == null) {
-            seasonPresenter.obtainEvents("1819", 1)
-        } else {
-            seasonPresenter.restore(this)
-        }
-    }
-
-    override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        menuInflater.inflate(R.menu.menu, menu)
-        return true
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        if (isFinishing) {
-            seasonPresenter.destroy()
-        }
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        if (item.itemId == R.id.action_choose_team) {
-            showTeamDialog()
-            return true
-        }
-        if (item.itemId == R.id.action_choose_season) {
-            showSeasonDialog()
-        }
-        return super.onOptionsItemSelected(item)
-    }
-
     private fun showTeamDialog() {
         val builder = AlertDialog.Builder(this, android.R.style.Theme_DeviceDefault_Light_Dialog)
         builder.setTitle(R.string.choose_team)
@@ -166,7 +171,7 @@ class SeasonActivity : BasePendingActivity<SeasonView, SeasonPresenter>(), Seaso
     }
 
     private fun updateBackground() {
-            rootLayout.setBackgroundResource(userSettings.getFlagRes())
+        rootLayout.setBackgroundResource(userSettings.getFlagRes())
     }
 
     @Suppress("OverridingDeprecatedMember")

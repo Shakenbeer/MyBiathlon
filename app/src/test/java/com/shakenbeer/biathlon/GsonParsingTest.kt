@@ -3,13 +3,13 @@
 package com.shakenbeer.biathlon
 
 import com.google.gson.GsonBuilder
-import org.junit.Test
-
-import java.text.SimpleDateFormat
-
-import org.junit.Assert.*
 import com.shakenbeer.biathlon.rest.model.SIWIEvent
+import com.shakenbeer.biathlon.shared.Const
+import com.shakenbeer.biathlon.shared.dates
 import org.apache.commons.lang3.time.DateUtils
+import org.junit.Assert.assertEquals
+import org.junit.Test
+import java.text.SimpleDateFormat
 import java.util.*
 import java.util.Calendar.DATE
 
@@ -21,7 +21,7 @@ class GsonParsingTest {
 
         val simpleDateFormat = SimpleDateFormat(Const.SIWI_DATE_FORMAT)
 
-        println("Hello, World " + simpleDateFormat.parse("2017-11-24T12:00:00Z").time)
+        println("Hello, World " + simpleDateFormat.parse("2017-11-24T12:00:00Z")?.time)
 
         println("Hello, World 2 " + DateUtils.truncate(simpleDateFormat.parse("2017-11-24T12:00:00Z"), DATE))
 
@@ -62,7 +62,7 @@ class GsonParsingTest {
             """
         val event = gson.fromJson(json, SIWIEvent::class.java)
 
-        System.out.println(event.dates)
+        println(event.dates)
 
         assertEquals("24 Nov - 3 Dec 2017", event.dates)
     }

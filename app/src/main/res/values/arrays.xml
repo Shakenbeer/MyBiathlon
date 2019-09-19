@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string-array name="seasons">
+        <item>19/20</item>
         <item>18/19</item>
         <item>17/18</item>
         <item>16/17</item>

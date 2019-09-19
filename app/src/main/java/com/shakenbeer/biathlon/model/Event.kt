@@ -21,7 +21,7 @@ class Event(val seasonId: String,
     val dates = if (startDate != SIWI_NO_START_DATE && endDate != SIWI_NO_END_DATE) {
         startTimeFormatter.format(startDate) + " - " + endTimeFormatter.format(endDate)
     } else {
-        "Dates undefined"
+        "Dates unknown"
     }
 
     override fun equals(other: Any?): Boolean {

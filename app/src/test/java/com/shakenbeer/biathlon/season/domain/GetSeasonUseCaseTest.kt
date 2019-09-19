@@ -5,12 +5,12 @@ package com.shakenbeer.biathlon.season.domain
 import com.google.gson.reflect.TypeToken
 import com.shakenbeer.biathlon.Utils.gson
 import com.shakenbeer.biathlon.Utils.stringFromFile
-import com.shakenbeer.biathlon.addHours
 import com.shakenbeer.biathlon.model.*
 import com.shakenbeer.biathlon.rest.model.SIWIEvent
 import com.shakenbeer.biathlon.rest.model.SIWIRace
-import com.shakenbeer.biathlon.season.data.CachingSeasonRepo.Companion.siwiToEvent
-import com.shakenbeer.biathlon.season.data.CachingSeasonRepo.Companion.siwiToRace
+import com.shakenbeer.biathlon.shared.addHours
+import com.shakenbeer.biathlon.shared.siwiToEvent
+import com.shakenbeer.biathlon.shared.siwiToRace
 import org.apache.commons.lang3.time.DateUtils
 import org.junit.Assert.assertTrue
 import org.junit.Test

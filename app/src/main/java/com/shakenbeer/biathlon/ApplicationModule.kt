@@ -1,23 +1,24 @@
 package com.shakenbeer.biathlon
 
-import androidx.room.Room
 import android.content.Context
+import androidx.room.Room
 import com.google.gson.GsonBuilder
-import com.shakenbeer.biathlon.Const.DB_NAME
+import com.shakenbeer.biathlon.rest.BiathlonResults
+import com.shakenbeer.biathlon.room.BiathlonDatabase
+import com.shakenbeer.biathlon.room.EventDao
+import com.shakenbeer.biathlon.room.RaceDao
+import com.shakenbeer.biathlon.shared.Const
+import com.shakenbeer.biathlon.shared.Const.DB_NAME
 import dagger.Module
 import dagger.Provides
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import com.shakenbeer.biathlon.rest.BiathlonResults
-import com.shakenbeer.biathlon.room.BiathlonDatabase
-import com.shakenbeer.biathlon.room.EventDao
-import com.shakenbeer.biathlon.room.RaceDao
 import javax.inject.Singleton
 
 @Module
-internal class ApplicationModule(private val application: BoilerplateApplication) {
+internal class ApplicationModule(private val application: BiathlonApplication) {
 
     @Singleton
     @Provides

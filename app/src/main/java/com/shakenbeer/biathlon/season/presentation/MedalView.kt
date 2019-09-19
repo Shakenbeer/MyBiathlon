@@ -2,10 +2,10 @@ package com.shakenbeer.biathlon.season.presentation
 
 import android.content.Context
 import android.content.res.Resources
-import androidx.annotation.DrawableRes
 import android.util.AttributeSet
 import android.widget.ImageView
 import android.widget.LinearLayout
+import androidx.annotation.DrawableRes
 import com.shakenbeer.biathlon.R
 
 class MedalView : LinearLayout {
@@ -37,7 +37,7 @@ class MedalView : LinearLayout {
             a.recycle()
         }
 
-        orientation = LinearLayout.HORIZONTAL
+        orientation = HORIZONTAL
 
         for (i in 1..gold) {
             addMedal(context, R.drawable.gold)

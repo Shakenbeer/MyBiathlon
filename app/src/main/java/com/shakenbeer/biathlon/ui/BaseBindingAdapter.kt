@@ -4,17 +4,19 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
+import androidx.recyclerview.widget.RecyclerView
 
 @Suppress("unused")
-abstract class BaseBindingAdapter : androidx.recyclerview.widget.RecyclerView.Adapter<BaseBindingViewHolder>(), BaseBindingViewHolder.ClickListener {
+abstract class BaseBindingAdapter<I> : RecyclerView.Adapter<BaseBindingViewHolder>(),
+        BaseBindingViewHolder.ClickListener {
 
-    var items: MutableList<Any> = mutableListOf()
+    var items: MutableList<I> = mutableListOf()
         set(value) {
             field = value
             notifyDataSetChanged()
         }
 
-    private var itemClickListener: ItemClickListener<Any>? = null
+    private var itemClickListener: ItemClickListener<I>? = null
 
     override fun onViewClick(position: Int) {
         itemClickListener?.onClick(items[position], position)
@@ -44,13 +46,13 @@ abstract class BaseBindingAdapter : androidx.recyclerview.widget.RecyclerView.Ad
     }
 
     @JvmOverloads
-    fun addItem(item: Any, position: Int = items.size) {
+    fun addItem(item: I, position: Int = items.size) {
         items.add(position, item)
         notifyItemInserted(position)
     }
 
     @JvmOverloads
-    fun addItems(itemsToAdd: List<Any>, position: Int = items.size) {
+    fun addItems(itemsToAdd: List<I>, position: Int = items.size) {
         items.addAll(position, itemsToAdd)
         notifyItemRangeInserted(position, itemsToAdd.size)
     }
@@ -68,7 +70,7 @@ abstract class BaseBindingAdapter : androidx.recyclerview.widget.RecyclerView.Ad
         }
     }
 
-    fun setItemClickListener(itemClickListener: ItemClickListener<Any>) {
+    fun setItemClickListener(itemClickListener: ItemClickListener<I>) {
         this.itemClickListener = itemClickListener
     }
 

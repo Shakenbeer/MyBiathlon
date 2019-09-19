@@ -1,8 +1,8 @@
 package com.shakenbeer.biathlon.season.domain
 
-import com.shakenbeer.biathlon.addDays
 import com.shakenbeer.biathlon.model.*
-import com.shakenbeer.biathlon.trimTime
+import com.shakenbeer.biathlon.shared.addDays
+import com.shakenbeer.biathlon.shared.trimTime
 import java.util.*
 import javax.inject.Inject
 

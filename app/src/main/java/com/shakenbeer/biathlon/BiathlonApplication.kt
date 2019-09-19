@@ -2,7 +2,7 @@ package com.shakenbeer.biathlon
 
 import android.app.Application
 
-class BoilerplateApplication : Application() {
+class BiathlonApplication : Application() {
 
     val component: ApplicationComponent by lazy {
         DaggerApplicationComponent.builder()

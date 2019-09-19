@@ -17,4 +17,7 @@ interface EventDao {
 
     @Query("select count(*) from event where seasonId = :seasonId")
     fun getEventsCount(seasonId: String): Int
+
+    @Query("select * from event where eventId = :eventId")
+    fun getEvent(eventId: String): Event
 }

@@ -21,7 +21,7 @@ abstract class BasePendingPresenter<T : MvpView> : BasePresenter<T>() {
     private fun dispatchViewUpdates() {
         if (isViewAttached) {
             while (!updates.isEmpty()) {
-                updates.poll().invoke(mvpView!!)
+                updates.poll()?.invoke(mvpView!!)
             }
         }
     }

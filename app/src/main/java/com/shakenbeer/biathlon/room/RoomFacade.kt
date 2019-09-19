@@ -17,6 +17,8 @@ class RoomFacade @Inject constructor(private val eventDao: EventDao,
 
     fun getSeasonEvents(seasonId: String) = eventDao.loadSeasonEvents(seasonId)
 
+    fun getEvent(eventId: String) = eventDao.getEvent(eventId)
+
     fun areEventRacesCached(eventId: String) = raceDao.getRacesCount(eventId) > 0
 
     fun saveEventRaces(races: List<Race>) = raceDao.save(races)

@@ -2,23 +2,23 @@ package com.shakenbeer.biathlon.settings
 
 import android.content.Context
 import android.content.SharedPreferences
-import com.shakenbeer.biathlon.Const.AUSTRIA
-import com.shakenbeer.biathlon.Const.BELARUS
-import com.shakenbeer.biathlon.Const.CHINA
-import com.shakenbeer.biathlon.Const.CZECH_REPUBLIC
-import com.shakenbeer.biathlon.Const.FINLAND
-import com.shakenbeer.biathlon.Const.FRANCE
-import com.shakenbeer.biathlon.Const.GERMANY
-import com.shakenbeer.biathlon.Const.IBU
-import com.shakenbeer.biathlon.Const.ITALY
-import com.shakenbeer.biathlon.Const.NEUTRAL
-import com.shakenbeer.biathlon.Const.NORWAY
-import com.shakenbeer.biathlon.Const.POLAND
-import com.shakenbeer.biathlon.Const.SLOVENIA
-import com.shakenbeer.biathlon.Const.SWEDEN
-import com.shakenbeer.biathlon.Const.UKRAINE
-import com.shakenbeer.biathlon.Const.USA
 import com.shakenbeer.biathlon.R
+import com.shakenbeer.biathlon.shared.Const.AUSTRIA
+import com.shakenbeer.biathlon.shared.Const.BELARUS
+import com.shakenbeer.biathlon.shared.Const.CHINA
+import com.shakenbeer.biathlon.shared.Const.CZECH_REPUBLIC
+import com.shakenbeer.biathlon.shared.Const.FINLAND
+import com.shakenbeer.biathlon.shared.Const.FRANCE
+import com.shakenbeer.biathlon.shared.Const.GERMANY
+import com.shakenbeer.biathlon.shared.Const.IBU
+import com.shakenbeer.biathlon.shared.Const.ITALY
+import com.shakenbeer.biathlon.shared.Const.NEUTRAL
+import com.shakenbeer.biathlon.shared.Const.NORWAY
+import com.shakenbeer.biathlon.shared.Const.POLAND
+import com.shakenbeer.biathlon.shared.Const.SLOVENIA
+import com.shakenbeer.biathlon.shared.Const.SWEDEN
+import com.shakenbeer.biathlon.shared.Const.UKRAINE
+import com.shakenbeer.biathlon.shared.Const.USA
 import javax.inject.Inject
 
 class LocalUserSettings @Inject constructor(val context: Context) : UserSettings {

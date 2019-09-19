@@ -7,7 +7,7 @@
 
         <variable
             name="obj"
-            type="com.shakenbeer.biathlon.model.Event" />
+            type="com.shakenbeer.biathlon.model.Race" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -24,17 +24,22 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <ImageView
+        <TextView
             android:id="@+id/flagImageView"
             android:layout_width="48dp"
             android:layout_height="48dp"
             android:layout_marginStart="50dp"
             android:layout_marginTop="24dp"
+            android:background="@drawable/race_km_background"
             android:contentDescription="@string/organizer_flag"
+            android:fontFamily="@font/audiowide"
+            android:gravity="center"
+            android:text="@{obj.km}"
+            android:textSize="17dp"
             app:layout_constraintStart_toEndOf="@id/vert_center"
             app:layout_constraintTop_toTopOf="parent"
-            app:nat="@{obj.nat}"
-            tools:srcCompat="@sample/flags" />
+            tools:ignore="SpUsage"
+            tools:text="12.5" />
 
         <TextView
             android:id="@+id/organizerTextView"
@@ -52,12 +57,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:text="@{obj.dates}"
+            android:text="@{obj.start}"
             android:textSize="12sp"
             app:layout_constraintEnd_toStartOf="@+id/guideline"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/organizerTextView"
-            tools:text="24 Nov - 3 Dec 2017" />
+            tools:text="24 Nov, Tue, 2017" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline"
@@ -71,7 +76,6 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="4dp"
             android:layout_marginBottom="4dp"
-
             android:orientation="horizontal"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="@+id/organizerTextView"
